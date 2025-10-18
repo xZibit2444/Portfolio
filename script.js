@@ -232,12 +232,21 @@ function initMobileMenu() {
             navMenu.classList.toggle('active');
         });
         
-        // Close menu when clicking outside
+        // Close menu when clicking outside or on a nav link
         document.addEventListener('click', function(e) {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             }
+        });
+        
+        // Close menu when clicking on nav links (mobile)
+        const mobileNavLinks = navMenu.querySelectorAll('.nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
         });
         
         // Close menu on link click
@@ -381,12 +390,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const skillItems = document.querySelectorAll('.skill-item');
     
     skillItems.forEach(item => {
+        // Mouse events for desktop
         item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-4px) scale(1.05)';
+            if (!('ontouchstart' in window)) {
+                this.style.transform = 'translateY(-4px) scale(1.05)';
+            }
         });
         
         item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            if (!('ontouchstart' in window)) {
+                this.style.transform = 'translateY(0) scale(1)';
+            }
+        });
+        
+        // Touch events for mobile
+        item.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+        
+        item.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
         });
     });
 });
@@ -703,6 +726,31 @@ function generateMockNews() {
         }
     ];
 }
+
+// Mobile optimization: Add touch feedback for interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+    const interactiveElements = document.querySelectorAll('.btn, .contact-card, .project-card, .news-card');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+            this.style.transition = 'transform 0.1s ease';
+        });
+        
+        element.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
+        });
+        
+        element.addEventListener('touchcancel', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Improve mobile scrolling performance
+    if ('ontouchstart' in window) {
+        document.body.style.webkitOverflowScrolling = 'touch';
+    }
+});
 
 // Make refresh function global so it can be called from HTML
 window.refreshTechNews = refreshTechNews;

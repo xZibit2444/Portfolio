@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -1208,6 +1209,9 @@ body {
         transition: var(--transition);
         box-shadow: var(--shadow-lg);
         padding: 20px 0;
+        z-index: 1000;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1215,7 +1219,20 @@ body {
     }
 
     .nav-menu li {
-        padding: 12px 0;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 12px 20px;
+        font-size: 16px;
+        min-height: 44px;
+        line-height: 1.2;
     }
 
     .hero-content {
@@ -1326,11 +1343,159 @@ body {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .typewriter {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
     }
 
     .about-stats {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .stat-card {
+        padding: 20px 16px;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    .about-img {
+        max-width: 200px;
+        height: 250px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 14px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .skill-category h3 {
+        font-size: 18px;
+    }
+    
+    .skill-item {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-card {
+        margin: 0;
+    }
+    
+    .project-content {
+        padding: 16px;
+    }
+    
+    .project-content h3 {
+        font-size: 18px;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .contact-card {
+        padding: 16px;
+        text-align: center;
+    }
+    
+    .contact-card h4 {
+        font-size: 16px;
+    }
+    
+    .news-loading, .news-error {
+        padding: 40px 16px;
+    }
+    
+    .news-card {
+        margin: 0;
+    }
+    
+    .news-content {
+        padding: 16px;
+    }
+    
+    .news-title {
+        font-size: 16px;
+    }
+    
+    .news-description {
+        font-size: 13px;
+    }
+    
+    .education-item {
+        flex-direction: column !important;
+        padding-left: 0 !important;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .education-date {
+        position: static !important;
+        width: auto !important;
+        margin-bottom: 16px;
+        order: 1;
+    }
+    
+    .education-content {
+        margin: 0 !important;
+        order: 2;
+    }
+    
+    .education-content::before {
+        display: none !important;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .cert-item {
+        padding: 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .cert-icon {
+        font-size: 24px;
     }
 
 
